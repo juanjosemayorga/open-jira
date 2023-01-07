@@ -1,9 +1,11 @@
 import { Typography } from '@mui/material'
-import React from 'react'
+import { Layout } from '../components/layouts'
 
 const HomePage = () => {
   return (
-    <Typography variant='h1' color='primary'>Hello World</Typography>
+    <Layout>
+      <Typography variant='h1' color='primary'>Hello World</Typography>
+    </Layout>
   )
 }
 
