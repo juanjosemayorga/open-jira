@@ -7,23 +7,23 @@ export interface EntriesState {
   entries: Entry[];
 }
 
-export const Entries_INITIAL_STATE: EntriesState = {
+export const ENTRIES_INITIAL_STATE: EntriesState = {
   entries: [
     {
       _id: uuidv4(),
-      description: "Non ad pariatur excepteur labore nulla ullamco.",
+      description: "Pendiente: Non ad pariatur excepteur labore nulla ullamco.",
       status: "pending",
       createdAt: Date.now(),
     },
     {
       _id: uuidv4(),
-      description: "Commodo id laborum irure est excepteur et ipsum dolor exercitation ipsum exercitation.",
+      description: "En-progreso: Commodo id laborum irure est excepteur et ipsum dolor exercitation ipsum exercitation.",
       status: "in-progress",
       createdAt: Date.now() - 1000000,
     },
     {
       _id: uuidv4(),
-      description: "Do duis consequat reprehenderit ut velit labore dolore ad.",
+      description: "Terminada: Do duis consequat reprehenderit ut velit labore dolore ad.",
       status: "finished",
       createdAt: Date.now() - 100000,
     },
@@ -31,7 +31,7 @@ export const Entries_INITIAL_STATE: EntriesState = {
 };
 
 export const EntriesProvider = ({ children }: any) => {
-  const [state, dispatch] = useReducer(entriesReducer, Entries_INITIAL_STATE)
+  const [state, dispatch] = useReducer(entriesReducer, ENTRIES_INITIAL_STATE)
 
   return (
     <EntriesContext.Provider value={{
