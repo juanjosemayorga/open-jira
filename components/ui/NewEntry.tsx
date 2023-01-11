@@ -4,10 +4,12 @@ import { Box, Button, TextField } from '@mui/material'
 import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined'
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined'
 import { EntriesContext } from '../../context/entries'
+import { UIContext } from '../../context/ui/UIContext';
 
 export const NewEntry = () => {
   const { addNewEntry } = useContext(EntriesContext);
-  const [isAdding, setIsAdding] = useState<boolean>(false);
+  const { isAddingEntry, setIsAddingEntry } = useContext(UIContext);
+  // const [isAdding, setIsAdding] = useState<boolean>(false);
   const [inputValue, setinputValue] = useState<string>('');
   const [isTouched, setIsTouched] = useState<boolean>(false);
 
@@ -20,14 +22,14 @@ export const NewEntry = () => {
       return;
     }
     addNewEntry(inputValue);
-    setIsAdding(false);
+    setIsAddingEntry(false);
     setIsTouched(false);
     setinputValue('');
   }
 
   return (
     <Box sx={{ marginBottom: 2, paddingX: 2 }}>
-      {isAdding ? (
+      {isAddingEntry ? (
         <>
           <TextField
             fullWidth
@@ -44,7 +46,7 @@ export const NewEntry = () => {
           />
 
           <Box display="flex" justifyContent="space-between">
-            <Button variant="text" onClick={() => setIsAdding(false)}>
+            <Button variant="text" onClick={() => setIsAddingEntry(false)}>
               Cancelar
             </Button>
 
@@ -63,7 +65,7 @@ export const NewEntry = () => {
           startIcon={<AddCircleOutlineOutlinedIcon />}
           fullWidth
           variant="outlined"
-          onClick={() => setIsAdding(true)}
+          onClick={() => setIsAddingEntry(true)}
         >
           Agregar Tarea
         </Button>
