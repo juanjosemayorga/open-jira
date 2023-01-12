@@ -47,10 +47,15 @@ export const EntriesProvider = ({ children }: any) => {
     });
   };
 
+  const updateEntry = (entry: Entry) => {
+    dispatch({ type: "[Entry] - Update-Entry", payload: entry });
+  };
+
   return (
     <EntriesContext.Provider value={{
       ...state,
       addNewEntry,
+      updateEntry,
     }}>
       {children}
     </EntriesContext.Provider>

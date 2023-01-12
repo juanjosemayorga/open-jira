@@ -12,8 +12,8 @@ interface Props {
 }
 
 export const EntryList = ({ status }: Props) => {
-  const { entries } = useContext(EntriesContext)
-  const { isDragging } = useContext(UIContext)
+  const { entries, updateEntry } = useContext(EntriesContext)
+  const { isDragging, stopDragging } = useContext(UIContext)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const entriesByStatus = useMemo(() => entries.filter((entry) => entry.status === status), [entries]);
@@ -24,7 +24,11 @@ export const EntryList = ({ status }: Props) => {
 
   const onDropEntry = (event: DragEvent<HTMLDivElement>) => {
     const id = event.dataTransfer.getData('text');
-    console.log(id);
+    const entry = entries.find((entry) => entry._id === id)!;
+    entry.status = status;
+
+    updateEntry(entry);
+    stopDragging();
   };
 
   return (
