@@ -8,8 +8,11 @@ const entrySchema = new Schema({
   createdAt: { type: Number },
   status: {
     type: String,
-    enum: ['pending', 'in-progress', 'finished'],
-    message: '{VALUE} is not supported',
+    enum: {
+      values: ['pending', 'in-progress', 'finished'],
+      message: '{VALUE} is not supported',
+    },
+    default: 'pending',
   },
 });
 
