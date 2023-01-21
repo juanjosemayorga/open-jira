@@ -8,7 +8,7 @@ const HomePage = () => {
       <Grid container spacing={2}>
         <Grid item xs={12} sm={4}>
           <Card sx={{ height: "calc(100vh - 100px)" }}>
-            <CardHeader title="Pendientes" />
+            <CardHeader title="Pending" />
             {/* Agregar una nueva entrada */}
             {/* Listado de las entradas */}
             <NewEntry />
@@ -18,14 +18,14 @@ const HomePage = () => {
 
         <Grid item xs={12} sm={4}>
           <Card sx={{ height: "calc(100vh - 100px)" }}>
-            <CardHeader title="En Progreso" />
+            <CardHeader title="In Progress" />
             <EntryList status='in-progress' />
           </Card>
         </Grid>
 
         <Grid item xs={12} sm={4}>
           <Card sx={{ height: "calc(100vh - 100px)" }}>
-            <CardHeader title="Completadas" />
+            <CardHeader title="Completed" />
             <EntryList status='finished' />
           </Card>
         </Grid>
